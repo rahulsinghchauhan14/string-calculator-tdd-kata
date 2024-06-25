@@ -15,8 +15,27 @@ describe("add module", () => {
     });
 
     test('string contain negative number should throw an error', () => {
-        expect(() => add('\n-4;0\n-9')).toThrow(Error);
+        expect(() => add("1\n-2,3")).toThrow(Error);
     });
 
+    test('handle single number', () => {
+        expect(add('1')).toBe(1);
+    });
+
+    test('handle two numbers', () => {
+        expect(add('1,5')).toBe(6);
+    });
+
+    test('handle multiple numbers', () => {
+        expect(add('1,3,5,6,10')).toBe(25);
+    });
+
+    test('handle new line (\/n) between numbers', () => {
+        expect(add('1\n3,5')).toBe(9);
+    });
+
+    test('handle different delimiters between numbers', () => {
+        expect(add('//;1\n3,9;5')).toBe(18);
+    });
     
 });
