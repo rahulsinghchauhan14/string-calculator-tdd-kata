@@ -1,7 +1,10 @@
 export function add(str: string): number {
 
     // return 0 if input string is empty
-    if (str === "") return 0;
+     if (str === "") return 0;
+
+    // return if value is number
+    if(typeof str === 'number') return str;
 
     // get array which contain numbers
     const numbersArray: Array<number> = getNumbersFromString(str);
@@ -13,12 +16,15 @@ export function add(str: string): number {
 
     // check if array contain negative number
     const isNegative = containNegativeNumber(numbersArray);
+
     if (isNegative) {
         throw new Error(`negative numbers not allowed ${isNegative}`);
     }
-    
+
     // add numbers from the string
-    return numbersArray.reduce((addNo, no) => addNo + no, 0);
+    const sum = numbersArray.reduce((addNo, no) => addNo + no, 0);
+ 
+    return isNaN(sum) ? 0 : sum;
  
 }
 

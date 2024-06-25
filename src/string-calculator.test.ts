@@ -1,6 +1,6 @@
 const { add,getCustomDelimiter } = require('./index');
 
-describe("add module", () => {
+describe("add module test cases", () => {
     
     test('string is empty should return 0', ()=>{
         expect(add("")).toBe(0);
@@ -8,6 +8,10 @@ describe("add module", () => {
 
     test('numbers of array is empty should return 0', () => {
         expect(add("//;\n")).toBe(0);
+    });
+
+    test('if input is integer', () => {
+        expect(add(3)).toBe(3);
     });
 
     test('get custom delimiters', () => {
@@ -37,5 +41,4 @@ describe("add module", () => {
     test('handle different delimiters between numbers', () => {
         expect(add('//;1\n3,9;5')).toBe(18);
     });
-    
 });
