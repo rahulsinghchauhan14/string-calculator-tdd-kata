@@ -11,7 +11,7 @@ describe("add module", () => {
     });
 
     test('string contain negative number should throw an error', () => {
-        expect(() => add('\n-4')).toThrow(Error);
+        expect(() => add('\n-4;0\n-9')).toThrow(Error);
     });
 
     
