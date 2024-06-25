@@ -17,6 +17,7 @@ export function add(str: string): number {
         throw new Error(`negative numbers not allowed ${isNegative}`);
     }
 
+    // 
 
 
 
@@ -26,6 +27,9 @@ export function add(str: string): number {
 
 
 function getNumbersFromString(str: string): Array<number> {
+    let defaultDelimiters = [',','\n'];
+    getCustomDelimiter(str);
+    
     let delimiters = ['//', ';', '\n'];
     let stringArray: Array<string>;
     delimiters.forEach(delimiter => {
@@ -33,6 +37,12 @@ function getNumbersFromString(str: string): Array<number> {
     });
     stringArray = str.split(",");
     return stringArray.filter(value => value !== '').map(no => parseInt(no));
+}
+
+export function getCustomDelimiter(str: string){
+    if(str.startsWith('//')){
+        return str[2];
+    }
 }
 
 function containNegativeNumber(numbers: Array<number>): string {
